@@ -1,0 +1,23 @@
+apply plugin: 'java'
+
+sourceCompatibility = 1.5
+version = '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-server', version: '2.53.1'
+    compile group: 'org.testng', name: 'testng', version: '6.8.8'
+    compile group: 'org.springframework', name: 'spring-context', version: '4.3.0.RELEASE'
+    compile group: 'org.springframework', name: 'spring-test', version: '4.3.0.RELEASE'
+}
+
+task mainSuiteTests(type: Test) {
+    useTestNG()
+    options {
+        suites "src/test/resources/testng-main.xml"
+        useDefaultListeners = true
+    }
+}
