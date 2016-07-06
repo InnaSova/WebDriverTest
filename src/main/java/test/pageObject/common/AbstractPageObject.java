@@ -24,7 +24,7 @@ public abstract class AbstractPageObject {
         PageFactory.initElements(driver, this);
     }
 
-   protected abstract WebElement getMainFrame();
+    protected abstract WebElement getMainFrame();
 
     /**
      * Switch to main frame

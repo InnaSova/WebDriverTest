@@ -30,16 +30,44 @@ public class SearchAnswerScenario {
     private JSExecutorService jse;
 
     /**
-     * Input question and choose suggestion by index
+     * Input the question and choose suggestion by index
      * @param question - question for search
      * @param suggestionIndex - suggestion index
      */
-    public void find(String question, int suggestionIndex) {
+    public void findBySuggestionIndex(String question, int suggestionIndex) {
+        // Switch to search frame
+        searchContainer.switchToMainPageFrame();
+        // input the question
         searchContainer.getTxtSearch().sendKeys(question);
         // Get suggestion list
         List<WebElement> list = searchContainer.getSuggestionList();
         // Choose suggestion by index
         list.get(suggestionIndex).click();
+        // Switch to answer frame
+        searchContainer.switchToMainPageFrame();
+    }
+
+    /**
+     * Input the question and choose suggestion by text
+     * @param question - question for search
+     * @param suggestionText - suggestion text
+     */
+    public void findBySuggestionText(String question, String suggestionText) {
+        // Switch to search frame
+        searchContainer.switchToMainPageFrame();
+        // input the question
+        searchContainer.getTxtSearch().sendKeys(question);
+        // Get suggestion list
+        List<WebElement> list = searchContainer.getSuggestionList();
+        // Choose suggestion by text
+        for(WebElement e : list) {
+            if((suggestionText).equals(e.getText())) {
+                e.click();
+                break;
+            }
+        }
+        // Switch to answer frame
+        searchContainer.switchToMainPageFrame();
     }
 
     /**

@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import test.config.PropertyLoader;
 import test.config.WebDriverConfiguration;
@@ -24,7 +26,7 @@ public class WebDriverTest extends AbstractTestNGSpringContextTests {
     @Autowired
     private PropertyLoader propertyLoader;
 
-    private Log log = LogFactory.getLog(this.getClass());
+    protected Log log = LogFactory.getLog(this.getClass());
 
     @BeforeClass
     public void setUpDriver() {
